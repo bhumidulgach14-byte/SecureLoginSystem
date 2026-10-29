@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Simple Secure Login System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="auth-container">
+        <!-- Header -->
+        <div class="auth-header">
+            <h1>Secure Login System</h1>
+            <p>Please enter your credentials to access your account</p>
+        </div>
+
+        <!-- Lockout Notice Banner (Hidden by default, displayed during lockout) -->
+        <div id="lockoutBanner" class="lockout-box" style="display: none;">
+            <strong>Account Temporarily Locked</strong>
+            <span>Too many failed attempts. Try again in:</span>
+            <div id="timerDisplay" class="lockout-timer">60s</div>
+        </div>
+
+        <!-- Inline Status & Validation Messages -->
+        <div id="messageBox" class="message-box"></div>
+
+        <!-- Login Form -->
+        <form id="loginForm" class="auth-form" novalidate>
+            <!-- Email Field -->
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    placeholder="e.g., student@example.com" 
+                    autocomplete="email"
+                >
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    placeholder="Enter your password" 
+                    autocomplete="current-password"
+                >
+            </div>
+
+            <!-- Show / Hide Password Checkbox -->
+            <label class="checkbox-group">
+                <input type="checkbox" id="showPasswordToggle">
+                <span>Show Password</span>
+            </label>
+
+            <!-- Submit Button -->
+            <button type="submit" id="loginBtn" class="btn-primary">Login</button>
+        </form>
+
+        <!-- Footer Links -->
+        <div class="auth-footer">
+            <a href="forgot-password.html">Forgot Password?</a>
+            <span>Don't have an account? <a href="register.html"><strong>Register here</strong></a></span>
+        </div>
+
+        <!-- Demo Credentials Helper Box (Helpful for evaluation & testing) -->
+        <div class="demo-credentials-box">
+            <h4>Demo Credentials</h4>
+            <p><strong>Email:</strong> <code>student@example.com</code></p>
+            <p><strong>Password:</strong> <code>Password123</code></p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/auth.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Simple Secure Login System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="auth-container dashboard-card">
+        <!-- Dashboard Header -->
+        <div class="auth-header" style="text-align: left;">
+            <h1>Dashboard</h1>
+            <p>Welcome, <strong id="userDisplayEmail" style="color: #2563eb;">User</strong>!</p>
+        </div>
+
+        <div class="message-box success" style="display: block; margin-bottom: 20px;">
+            &#10003; Login Successful! You have entered the protected area.
+        </div>
+
+        <!-- Project Implementation Highlights -->
+        <div class="dashboard-details">
+            <h3 style="font-size: 15px; margin-bottom: 8px; color: #1e293b;">Project Feature Checklist:</h3>
+            <ul>
+                <li><strong>HTML & CSS:</strong> Clean, structured card layout with responsive styling.</li>
+                <li><strong>Client Validation:</strong> Non-empty fields and RFC-standard email check.</li>
+                <li><strong>Security Control:</strong> Maximum 3 wrong attempts with a 1-minute countdown lock.</li>
+                <li><strong>Password Recovery:</strong> Forgot password workflow with 8+ character rule.</li>
+                <li><strong>User Registration:</strong> New user account creation with duplicate-email prevention.</li>
+                <li><strong>Storage:</strong> HTML5 <code>LocalStorage</code> (multi-user) and <code>SessionStorage</code>.</li>
+            </ul>
+        </div>
+
+        <!-- Logout Action -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 24px;">
+            <span style="font-size: 13px; color: #64748b;">Session Active</span>
+            <button id="logoutBtn" class="btn-danger">Logout</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/auth.js"></script>
+    <script>
+        // Check if user is authenticated via SessionStorage
+        const activeUser = getActiveSession();
+
+        if (!activeUser) {
+            // Not authenticated: Redirect back to login page
+            alert('Access denied. Please log in first.');
+            window.location.href = 'index.html';
+        } else {
+            // Display logged-in user email
+            document.getElementById('userDisplayEmail').textContent = activeUser;
+        }
+
+        // Logout Handler
+        document.getElementById('logoutBtn').addEventListener('click', function () {
+            clearSession();
+            alert('You have been logged out.');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
